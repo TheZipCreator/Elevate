@@ -25,5 +25,12 @@ echo Codes have not been implemented yet, but they will be soon.
 goto input
 :game
 cls
+echo You wake up in an elevator. The elevator scrolls up to a dungeon area, where it opens, you proceed to leave it.
 pause > nul
-goto title_screen
+goto loadroom
+:g_input
+set /p input = "What do you do?"
+goto g_input
+:loadroom
+if %x% == 0 and %y% == 0 echo You are in a room. There is a door to the north and east. The room has slate walls and a cobblestone floor
+goto g_input
