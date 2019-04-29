@@ -32,5 +32,11 @@ goto loadroom
 set /p input = "What do you do?"
 goto g_input
 :loadroom
-if %x% == 0 and %y% == 0 echo You are in a room. There is a door to the north and east. The room has slate walls and a cobblestone floor
+if %x% == 0 (
+	if %y% == 0 ( 
+		echo You are in a room. There is a door to the north and east. The room has slate walls and a cobblestone floor
+	)
+)
+echo.
+echo What do you do?
 goto g_input
