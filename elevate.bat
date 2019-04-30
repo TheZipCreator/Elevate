@@ -1,4 +1,5 @@
 @echo off
+setlocal EnableExtensions EnableDelayedExpansion
 rem This is just a shell - just containing the title screen.
 :title_screen
 set x=0
@@ -26,17 +27,23 @@ goto input
 :game
 cls
 echo You wake up in an elevator. The elevator scrolls up to a dungeon area, where it opens, you proceed to leave it.
-pause > nul
 goto loadroom
 :g_input
 set /p input = "What do you do?"
+call command.bat %input%
 goto g_input
 :loadroom
+set valid = 0
 if %x% == 0 (
 	if %y% == 0 ( 
-		echo You are in a room. There is a door to the north and east. The room has slate walls and a cobblestone floor
+		echo You are in a room. There is a door to the south and east. The room has slate walls and a cobblestone floor
+		set north = 0
+		set east = 1
+		set south = 1
+		set west = 0
+		set valid = 1
 	)
 )
+if "%valid%" == "0" echo ERR: Invalid room. Room position is [%x%,%y%]
 echo.
-echo What do you do?
 goto g_input
